@@ -2,6 +2,8 @@
 
 Bluetooth HCI socket binding for Node.js
 
+Forked from abandonware/node-bluetooth-hci-socket
+
 __NOTE:__ Currently only supports __Linux__, __FreeBSD__ and __Windows__.
 
 ## Prerequisites
@@ -50,7 +52,7 @@ Note:
 ## Install
 
 ```sh
-npm install @abandonware/bluetooth-hci-socket
+npm install @episensor/bluetooth-hci-socket
 ```
 
 ## Usage
@@ -162,7 +164,7 @@ bluetoothHciSocket.on('error', function(error) {
 
 ## Examples
 
-See [examples folder](https://github.com/abandonware/node-bluetooth-hci-socket/blob/master/examples) for code examples.
+See [examples folder](https://github.com/episensor/node-bluetooth-hci-socket/blob/master/examples) for code examples.
 
 ## Platform Notes
 
