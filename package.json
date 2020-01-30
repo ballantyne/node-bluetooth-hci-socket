@@ -1,24 +1,25 @@
 {
-  "name": "@abandonware/bluetooth-hci-socket",
+  "name": "@episensor/bluetooth-hci-socket",
   "version": "0.5.3-4",
   "description": "Bluetooth HCI socket binding for Node.js",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/abandonware/node-bluetooth-hci-socket.git"
+    "url": "https://github.com/episensor/node-bluetooth-hci-socket.git"
   },
   "keywords": [
     "HCI",
     "Bluetooth",
     "Linux",
-    "Windows"
+    "Windows",
+    "episensor
   ],
   "author": "Sandeep Mistry <sandeep.mistry@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/abandonware/node-bluetooth-hci-socket/issues"
+    "url": "https://github.com/episensor/node-bluetooth-hci-socket/issues"
   },
-  "homepage": "https://github.com/abandonware/node-bluetooth-hci-socket",
+  "homepage": "https://github.com/episensor/node-bluetooth-hci-socket",
   "os": [
     "linux",
     "android",
@@ -43,7 +44,7 @@
   "binary": {
     "module_name": "binding",
     "module_path": "./lib/binding/",
-    "host": "https://github.com/abandonware/node-bluetooth-hci-socket/releases/download/",
+    "host": "https://github.com/episensor/node-bluetooth-hci-socket/releases/download/",
     "package_name": "{module_name}-{version}-{node_abi}-{platform}-{arch}.tar.gz",
     "remote_path": "{version}"
   },
