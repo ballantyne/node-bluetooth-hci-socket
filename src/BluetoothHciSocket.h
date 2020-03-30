@@ -21,17 +21,15 @@ public:
   static NAN_METHOD(SetFilter);
   static NAN_METHOD(Start);
   static NAN_METHOD(Stop);
+  static NAN_METHOD(OpenSocket);
+  static NAN_METHOD(CloseSocket);
   static NAN_METHOD(Write);
-  static NAN_METHOD(Open);
-  static NAN_METHOD(Close);
 
 private:
   BluetoothHciSocket();
   ~BluetoothHciSocket();
 
-  void open();
-  void close();
-
+  void openSocket();
   void start();
   int bindRaw(int* devId);
   int bindUser(int* devId);
@@ -39,6 +37,7 @@ private:
   bool isDevUp();
   void setFilter(char* data, int length);
   void stop();
+  void closeSocket();
 
   void write_(char* data, int length);
 
