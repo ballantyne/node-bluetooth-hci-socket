@@ -125,6 +125,8 @@ NAN_MODULE_INIT(BluetoothHciSocket::Init) {
   Nan::SetPrototypeMethod(tmpl, "setFilter", SetFilter);
   Nan::SetPrototypeMethod(tmpl, "stop", Stop);
   Nan::SetPrototypeMethod(tmpl, "write", Write);
+  Nan::SetPrototypeMethod(tmpl, "open", Open);
+  Nan::SetPrototypeMethod(tmpl, "close", Close);
 
   Nan::Set(target, Nan::New("BluetoothHciSocket").ToLocalChecked(), Nan::GetFunction(tmpl).ToLocalChecked());
 }
@@ -139,6 +141,14 @@ BluetoothHciSocket::BluetoothHciSocket() :
   _addressType(0)
   {
 
+  this->open();
+}
+
+BluetoothHciSocket::~BluetoothHciSocket() {
+  this->close();
+}
+
+void BluetoothHciSocket::open() {
   int fd = socket(AF_BLUETOOTH, SOCK_RAW | SOCK_CLOEXEC, BTPROTO_HCI);
   if (fd == -1) {
     Nan::ThrowError(Nan::ErrnoException(errno, "socket"));
@@ -154,7 +164,7 @@ BluetoothHciSocket::BluetoothHciSocket() :
   this->_pollHandle.data = this;
 }
 
-BluetoothHciSocket::~BluetoothHciSocket() {
+void BluetoothHciSocket::close() {
   uv_close((uv_handle_t*)&this->_pollHandle, (uv_close_cb)BluetoothHciSocket::PollCloseCallback);
 
   close(this->_socket);

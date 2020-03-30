@@ -22,10 +22,15 @@ public:
   static NAN_METHOD(Start);
   static NAN_METHOD(Stop);
   static NAN_METHOD(Write);
+  static NAN_METHOD(Open);
+  static NAN_METHOD(Close);
 
 private:
   BluetoothHciSocket();
   ~BluetoothHciSocket();
+
+  void open();
+  void close();
 
   void start();
   int bindRaw(int* devId);
