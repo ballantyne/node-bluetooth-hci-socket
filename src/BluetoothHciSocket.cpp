@@ -142,6 +142,10 @@ BluetoothHciSocket::BluetoothHciSocket() :
   {
 
   this->open();
+
+  this->start();
+
+  this->_pollHandle.data = this;
 }
 
 BluetoothHciSocket::~BluetoothHciSocket() {
@@ -155,17 +159,10 @@ void BluetoothHciSocket::open() {
     return;
   }
   this->_socket = fd;
-
-  if (uv_poll_init(uv_default_loop(), &this->_pollHandle, this->_socket) < 0) {
-    Nan::ThrowError("uv_poll_init failed");
-    return;
-  }
-
-  this->_pollHandle.data = this;
 }
 
 void BluetoothHciSocket::close() {
-  uv_close((uv_handle_t*)&this->_pollHandle, (uv_close_cb)BluetoothHciSocket::PollCloseCallback);
+  this->stop();
 
   close(this->_socket);
 }
