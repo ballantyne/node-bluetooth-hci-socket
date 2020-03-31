@@ -8,9 +8,33 @@ __NOTE:__ Currently only supports __Linux__, __FreeBSD__ and __Windows__.
 
 ## Prerequisites
 
- * [node-gyp requirements](https://github.com/TooTallNate/node-gyp#installation)
+ * [node-pre-gyp requirements](https://github.com/mapbox/node-pre-gyp)
 
-__NOTE:__ `node-gyp` is only required if the npm cannot find binary for your OS version otherwise the binaries are prebuilt.
+__NOTE:__ `node-pre-gyp` is only required if the npm cannot find binary for your OS version otherwise the binaries are prebuilt. Pre-built binaries are available on GitHub for nodeJS v64 (Linux, x64 and ARMv7 only).
+
+## Building a binary
+
+ * Install node-gyp
+
+npm install -g node-gyp
+
+ * Install node-pre-gyp
+
+npm install node-pre-gyp -g
+
+ * Configure node-pre-gyp
+
+node-pre-gyp configure 
+
+ * Build the binary
+
+node-pre-gyp build 
+
+ * Package the binary
+
+node-pre-gyp package
+
+The output binary will be located in /build/stage/<version>/binding-<version>-node-<nodeJS-version>-<platform>-<arch>.tar.gz
 
 ### Linux
 
